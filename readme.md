@@ -54,3 +54,29 @@ There is a custom event listener you can use for this.
   });
 
 ```
+
+## Other features
+
+By default, this package will detect mobile browsers with a page with less than 800px.
+On mobile browsers, the popstate will scroll to top first in place of a page load (unless the user is already at the top of the page).
+
+You can change this number by setting the variable `MobileWidth`, and can change this value dynamically at any time
+
+```js
+
+  // set the mobile width to less than 800px
+  let MobileWidth = 800;
+
+  setTimeout(function(){
+    if(MessWithUsers === true){
+      MobileWidth = 200;
+    }
+  }, 1000);
+
+  setTimeout(function(){
+    if(MessWithUsers === true){
+      MobileWidth = 1080;
+    }
+  }, 3000);
+
+```
