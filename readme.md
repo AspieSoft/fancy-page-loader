@@ -2,7 +2,7 @@
 
 ![jsDelivr monthly hits (GitHub)](https://img.shields.io/jsdelivr/gh/hm/AspieSoft/fancy-page-loader)
 
-[![donation link](https://img.shields.io/badge/buy%20me%20a%20coffee-square-blue)](https://buymeacoffee.aspiesoft.com)
+[![donation link](https://img.shields.io/badge/buy%20me%20a%20coffee-paypal-blue)](https://paypal.me/shaynejrtaylor?country.x=US&locale.x=en_US)
 
 Uses the fetch method in JavaScript (if available) to load local pages in place of a url redirect. If you have a consistant header or some scripts that will always be used, you can avoid sending them, and reduce the bandwith usage of your website. As a plus, this package adds a fancy loading animation.
 
