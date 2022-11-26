@@ -12,26 +12,30 @@ Note: if anything fails to load, the script should automatically let the browser
 
 ```html
 <!--? setting media to "print" and then to "all" acts as an async load for stylesheets -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AspieSoft/fancy-page-loader@1.0.0/style.min.css" media="print" onload="this.media='all'"/>
-<script src="https://cdn.jsdelivr.net/gh/AspieSoft/fancy-page-loader@1.0.0/script.min.js" async></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AspieSoft/fancy-page-loader@2.0.0/style.min.css" media="print" onload="this.media='all'"/>
+<script src="https://cdn.jsdelivr.net/gh/AspieSoft/fancy-page-loader@2.0.0/script.min.js" async></script>
 ```
 
 ## Setup
 
 ### Basic setup
 
-- Add the attribute [main-page-content] to the main element that you want to replace the content of.
+- Add the attribute `[fetch-loader="content"]` to the main element that you want to replace the content of.
 - Put this attribute on every page you want to reload.
 
 By default, the page loader will detect this attribute if the fetch request receives an html string. Things should just start to work like magic.
+
+You can also set `[fetch-loader]`  to any other string (apart from `"url"` for compatability reasons).
+Using another string allows you to modify more than one element when the page loads.
+By default `"content"` is the main element, and if it has a scrollHeight, it will use that as the scrolling element in place of using the body.
 
 ### Optimized Setup (optional)
 
 In addition to the basic setup, you can also optimize how you return content, to skip out on headers that will stay unchanged.
 
-- When a fetch request is sent, it will send a `GET` request and include the query `FetchLoading="true"`, which you can use to detect when to send just the content.
+- When a fetch request is sent, it will send a `GET` request and include the query `FetchLoading="<Url You Came From>"`, which you can use to detect when to send just the content.
 - For this request, you should send a json responce (with the `content-type` set to include `application/json`)
-- Send an object with the key `content` containing your html (including your page element containing the [main-page-content] attribute).
+- Send an object with the key `content` containing your html (including your page element containing the `[fetch-loader]` attribute).
 - (Optional) you can also send the key `url` containing a modified url in case you want to simulate a local redirect.
 - If you send no `content` key in your object, the request will simply be redirected for the browser to handle the normal way.
 
@@ -42,15 +46,22 @@ There is a custom event listener you can use for this.
 
 ```js
 
-  let page = document.querySelector('[main-page-content]');
+  let page = document.querySelector('[fetch-loader="content"]');
 
   // this event listener runs every time a new page is loaded, and on the initial load 10ms after 'DOMContentLoaded' runs
-  document.addEventListener('FetchPageLoaded', function(e) {
+  document.addEventListener('PageLoaded', function(e) {
     // note: the animation may still be running for the page when this is called
     // you can safely use a 'setTimeout(function(){}, 530);' inside this event listener to ensure the animation is done running
 
     // e.detail.page is your new page element that is being loaded
     page = e.detail.page;
+
+    // e.detail.attr is the value of `fetch-loader` that is being used
+    // note: this method will run once for every element that uses the `fetch-loader` attribute
+    let attr = e.detail.old;
+
+    // e.detail.old is the original page you are coming from
+    let oldPage = e.detail.old;
   });
 
 ```
@@ -80,3 +91,10 @@ You can change this number by setting the variable `MobileWidth`, and can change
   }, 3000);
 
 ```
+
+## Backwards Compatability
+
+Version 2 is backwards compatable with the old version 1
+
+In version 1, the attribute `[main-page-content]` is equivalent to `[fetch-loader="content"]`.
+This attribute will also trigger the old event listener `FetchPageLoaded` in addition to using the new event listener `PageLoaded`.
