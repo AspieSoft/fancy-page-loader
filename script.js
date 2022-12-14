@@ -518,6 +518,11 @@
         return;
       }
 
+      // prevent non http links and file extentions from loading
+      if(!elm.href.match(/^https?:\/\//) || elm.href.match(/\.[\w_-]+$/)){
+        return;
+      }
+
       onElmClick(elm);
     });
   }, 100);

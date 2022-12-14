@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <html lang="en" dir="rtl"> -->
+<head>
+  <meta charset="UTF-8"/>
+  <!-- <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi"/> -->
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0"/>
+  <link rel="icon" type="image/png" href="/test/favicon.png"/>
+  <meta name="description" content="Theme"/>
+  <title>Theme</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/necolas/normalize.css@8.0.1/normalize.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="/test/theme/config.css"/>
+  <link rel="stylesheet" href="/test/theme/theme.css"/>
+  <script src="/test/theme/theme.js" defer></script>
+
+  <!--? setting media to "print" and then to "all" acts as an async load for stylesheets -->
+  <link rel="stylesheet" href="/style.css" media="print" onload="this.media='all'"/>
+  <script src="/script.js" async></script>
+</head>
+<body>
+  <header>
+    <a class="skip-nav" href="#page">SKIP NAVIGATION</a>
+    <div class="header-top">
+      <a class="site-logo" href="#">LOGO</a>
+
+      <nav class="header-group">
+
+        <!-- todo: in css, add optional header menu to bottom on mobile (smaller mobile screens, probably about 400-500px) -->
+
+        <!--? Add class "mobile-nav" to keep the header-menu visible on mobile  -->
+        <ul class="header-menu">
+          <!--* header menu -->
+          <li><a href="/test">Home</a></li>
+          <li><a href="/test/about">About</a></li>
+          <li><a href="/test/contact">Contact Us</a></li>
+          <li>
+            <a href="/test/more">More</a>
+            <div class="submenu">
+              <ul>
+                <li><a href="/more1">More 1</a></li>
+                <li><a href="/more2">More 2</a></li>
+                <li><a href="/more3">More 3</a></li>
+                <li>
+                  <a href="/extra">Extra</a>
+                  <div class="submenu">
+                    <ul>
+                      <li><a href="/extra1">Extra 1</a></li>
+                      <li><a href="/extra2">Extra 2</a></li>
+                      <li><a href="/extra3">Extra 3</a></li>
+                      <li>
+                        <a href="/test">Test</a>
+                        <div class="submenu">
+                          <ul>
+                            <li><a href="/test1">Test 1</a></li>
+                            <li><a href="/test2">Test 2</a></li>
+                            <li><a href="/test3">Test 3</a></li>
+                            <li><a href="/test4">Test 4</a></li>
+                            <li><a href="/test5">Test 5</a></li>
+                            <li><a href="/test6">Test 6</a></li>
+                            <li><a href="/test7">Test 7</a></li>
+                            <li><a href="/test8">Test 8</a></li>
+                            <li><a href="/test9">Test 9</a></li>
+                            <li>
+                              <a href="/test">Test</a>
+                              <div class="submenu">
+                                <ul>
+                                  <li><a href="/test1">Test 1</a></li>
+                                  <li><a href="/test2">Test 2</a></li>
+                                  <li><a href="/test3">Test 3</a></li>
+                                  <li>
+                                    <a href="/test">Test</a>
+                                    <div class="submenu">
+                                      <ul>
+                                        <li><a href="/test1">Test 1</a></li>
+                                        <li><a href="/test2">Test 2</a></li>
+                                        <li><a href="/test3">Test 3</a></li>
+                                        <li>
+                                          <a href="/test">Test</a>
+                                          <div class="submenu">
+                                            <ul>
+                                              <li><a href="/test1">Test 1</a></li>
+                                              <li><a href="/test2">Test 2</a></li>
+                                              <li><a href="/test3">Test 3</a></li>
+                                              <li>
+                                                <a href="/test">Test</a>
+                                                <div class="submenu">
+                                                  <ul>
+                                                    <li><a href="/test1">Test 1</a></li>
+                                                    <li><a href="/test2">Test 2</a></li>
+                                                    <li><a href="/test3">Test 3</a></li>
+                                                  </ul>
+                                                </div>
+                                              </li>
+                                              <li><a href="/test4">Test 4</a></li>
+                                              <li><a href="/test5">Test 5</a></li>
+                                              <li><a href="/test6">Test 6</a></li>
+                                              <li><a href="/test7">Test 7</a></li>
+                                            </ul>
+                                          </div>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li><a href="/more4">More 4</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+        <div class="header-ctrl">
+          <!-- todo: make search icon optional -->
+          <a href="#header-search" class="header-ctrl-search"><i class="fa-solid fa-magnifying-glass"></i></a>
+
+          <!-- todo: add optional settings gear icon -->
+          <!-- todo: expand more options on nav menu open -->
+
+          <!--? Add class "desktop-nav" to keep the nav-menu button visible on desktop  -->
+          <a href="#nav-menu" class="header-ctrl-nav desktop-nav"><div></div></a>
+
+          <!--? Add "debug" attribute to keep header-search open -->
+          <form class="header-search" action="#">
+            <input id="header-search" type="text" name="s" placeholder="Search For Anything..."/>
+          </form>
+        </div>
+      </nav>
+    </div>
+
+    <!--? Add "debug" attribute to keep nav-menu open -->
+    <nav id="nav-menu" tabindex="-1">
+      <ul class="mobile-menu">
+        <!--* nav menu -->
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <li>
+          <a href="/more">More</a>
+          <div class="submenu">
+            <ul>
+              <li><a href="/more1">More 1</a></li>
+              <li><a href="/more2">More 2</a></li>
+              <li><a href="/more3">More 3</a></li>
+              <li>
+                <a href="/extra">Extra</a>
+                <div class="submenu">
+                  <ul>
+                    <li><a href="/extra1">Extra 1</a></li>
+                    <li><a href="/extra2">Extra 2</a></li>
+                    <li><a href="/extra3">Extra 3</a></li>
+                    <li>
+                      <a href="/test">Test</a>
+                      <div class="submenu">
+                        <ul>
+                          <li><a href="/test1">Test 1</a></li>
+                          <li><a href="/test2">Test 2</a></li>
+                          <li><a href="/test3">Test 3</a></li>
+                          <li><a href="/test4">Test 4</a></li>
+                          <li><a href="/test5">Test 5</a></li>
+                          <li><a href="/test6">Test 6</a></li>
+                          <li><a href="/test7">Test 7</a></li>
+                          <li><a href="/test8">Test 8</a></li>
+                          <li><a href="/test9">Test 9</a></li>
+                          <li>
+                            <a href="/test">Test</a>
+                            <div class="submenu">
+                              <ul>
+                                <li><a href="/test1">Test 1</a></li>
+                                <li><a href="/test2">Test 2</a></li>
+                                <li><a href="/test3">Test 3</a></li>
+                                <li>
+                                  <a href="/test">Test</a>
+                                  <div class="submenu">
+                                    <ul>
+                                      <li><a href="/test1">Test 1</a></li>
+                                      <li><a href="/test2">Test 2</a></li>
+                                      <li><a href="/test3">Test 3</a></li>
+                                      <li>
+                                        <a href="/test">Test</a>
+                                        <div class="submenu">
+                                          <ul>
+                                            <li><a href="/test1">Test 1</a></li>
+                                            <li><a href="/test2">Test 2</a></li>
+                                            <li><a href="/test3">Test 3</a></li>
+                                            <li>
+                                              <a href="/test">Test</a>
+                                              <div class="submenu">
+                                                <ul>
+                                                  <li><a href="/test1">Test 1</a></li>
+                                                  <li><a href="/test2">Test 2</a></li>
+                                                  <li><a href="/test3">Test 3</a></li>
+                                                </ul>
+                                              </div>
+                                            </li>
+                                            <li><a href="/test4">Test 4</a></li>
+                                            <li><a href="/test5">Test 5</a></li>
+                                            <li><a href="/test6">Test 6</a></li>
+                                            <li><a href="/test7">Test 7</a></li>
+                                          </ul>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="/events">Events</a></li>
+      </ul>
+    </nav>
+
+    <nav id="bottom-menu" class="bottom-menu">
+      <!--? optional bottom menu for mobile (remove content to disable) -->
+      <ul>
+        <li><a href="/"><i class="fa-solid fa-house"></i></a></li>
+        <li><a href="#comments"><i class="fa-solid fa-comment"></i></a></li>
+        <li><a href="/login"><i class="fa-solid fa-right-to-bracket"></i></a></li>
+      </ul>
+    </nav>
+  </header>
+  <div id="page" class="fullscreen-off" main-page-content fetch-loader="content" tabindex="-1">
+    <div class="header-image">
+      <!--* Header Image and Content -->
+      <h1>Theme</h1>
+      <!-- <img src="/header-image.png" alt="header image"/> -->
+    </div>
+    <main>
+      <!--* Page Content -->
+      <h1 id="hi">Hello, World!</h1>
+
+      <p>Mollit consectetur esse cupidatat in <a>velit incididunt</a> sint ipsum dolor et laborum. Aliquip excepteur Lorem labore qui est enim ad tempor dolor ad ad et nostrud Lorem. Non non aliqua do Lorem nostrud labore quis nostrud ipsum.</p>
+      <p>Dolore mollit pariatur anim commodo occaecat ipsum eiusmod ex ut. Ex ea qui qui occaecat minim officia dolore nulla. Mollit adipisicing est mollit irure sunt commodo consequat anim Lorem id elit fugiat aliqua. Id id amet minim nostrud nulla nulla nostrud Lorem adipisicing et do. Dolor ad fugiat magna cupidatat adipisicing aliquip ipsum anim deserunt excepteur laboris elit. Reprehenderit duis non Lorem duis ut pariatur ea. Excepteur sit eu Lorem commodo ipsum.</p>
+      <p>Fugiat non ad do reprehenderit adipisicing duis cillum officia non sint. Esse aute dolore incididunt do est veniam culpa. Enim ut in dolor officia officia adipisicing ea labore reprehenderit. Nostrud do nulla officia mollit mollit dolor cupidatat deserunt sint in sint nostrud. Do deserunt sit cillum elit magna commodo ut laboris excepteur in eiusmod est duis. Deserunt et qui in Lorem reprehenderit excepteur deserunt. Cillum exercitation voluptate mollit velit ut consectetur.</p>
+      <p>Qui nisi aliqua sunt quis aute culpa elit do. Cillum qui consectetur amet incididunt. Sit laborum Lorem velit quis ad enim minim ea amet et mollit occaecat. Culpa occaecat eu adipisicing commodo amet fugiat ex.</p>
+      <p>Officia occaecat reprehenderit excepteur minim ex magna nulla deserunt sint excepteur exercitation dolore ipsum consectetur. In nostrud ullamco duis commodo elit labore et ad sint officia tempor. Eiusmod duis laboris amet aute Lorem sit eu mollit ea non veniam. Consectetur ea veniam aute tempor fugiat et deserunt exercitation est commodo aute laboris. Culpa ea est ut laborum exercitation cillum consectetur aliqua id veniam id ad velit do. Voluptate eu pariatur velit et tempor.</p>
+
+      <a href="/test/about">About</a>
+
+      <p>Sint do aliquip qui ex minim. In ea cillum est non cupidatat fugiat culpa occaecat nostrud amet exercitation. Et sit commodo do amet ex exercitation pariatur.</p>
+      <p>Ad velit exercitation do proident culpa adipisicing amet esse nostrud aliqua. Laborum est ut laborum voluptate Lorem aliqua labore mollit minim minim. Ad labore tempor eiusmod cupidatat esse sint aliquip in Lorem.</p>
+      <p>Aliquip occaecat aliquip adipisicing proident nostrud minim quis mollit ad tempor dolor reprehenderit cupidatat. Eiusmod exercitation Lorem minim ipsum sint non elit cupidatat. Magna aliqua aliqua sint est. Incididunt dolor magna incididunt dolore sunt.</p>
+      <p>Mollit nisi qui magna magna esse. In laborum voluptate sunt commodo minim voluptate id do sunt veniam. Aliquip sit incididunt cupidatat veniam consectetur. Labore amet amet qui ad ea voluptate deserunt Lorem commodo. Ipsum elit enim anim magna do deserunt nulla ea sint excepteur. Mollit ullamco est nostrud dolore sunt proident. Excepteur cupidatat exercitation quis incididunt nisi sit tempor laboris pariatur velit.</p>
+      <p>Est nostrud exercitation in do id eiusmod occaecat ut do voluptate tempor ea velit excepteur. Reprehenderit mollit aute sunt consectetur mollit laboris adipisicing velit veniam aliqua culpa ut irure. Sunt aliquip non officia ex est enim est dolor. Pariatur laboris laboris id sit sit deserunt minim irure officia culpa commodo nisi dolor. Proident elit qui consequat eu do dolor eu Lorem officia ut ad id ut. Nulla ullamco sit sint dolore deserunt culpa non cillum excepteur excepteur qui veniam sit. Fugiat est in labore Lorem irure ut pariatur dolor magna amet commodo fugiat.</p>
+
+      <a href="/test/favicon.png">Favicon</a>
+
+      <p>Mollit consectetur esse cupidatat in velit incididunt sint ipsum dolor et laborum. Aliquip excepteur Lorem labore qui est enim ad tempor dolor ad ad et nostrud Lorem. Non non aliqua do Lorem nostrud labore quis nostrud ipsum.</p>
+      <p>Dolore mollit pariatur anim commodo occaecat ipsum eiusmod ex ut. Ex ea qui qui occaecat minim officia dolore nulla. Mollit adipisicing est mollit irure sunt commodo consequat anim Lorem id elit fugiat aliqua. Id id amet minim nostrud nulla nulla nostrud Lorem adipisicing et do. Dolor ad fugiat magna cupidatat adipisicing aliquip ipsum anim deserunt excepteur laboris elit. Reprehenderit duis non Lorem duis ut pariatur ea. Excepteur sit eu Lorem commodo ipsum.</p>
+      <p>Fugiat non ad do reprehenderit adipisicing duis cillum officia non sint. Esse aute dolore incididunt do est veniam culpa. Enim ut in dolor officia officia adipisicing ea labore reprehenderit. Nostrud do nulla officia mollit mollit dolor cupidatat deserunt sint in sint nostrud. Do deserunt sit cillum elit magna commodo ut laboris excepteur in eiusmod est duis. Deserunt et qui in Lorem reprehenderit excepteur deserunt. Cillum exercitation voluptate mollit velit ut consectetur.</p>
+      <p>Qui nisi aliqua sunt quis aute culpa elit do. Cillum qui consectetur amet incididunt. Sit laborum Lorem velit quis ad enim minim ea amet et mollit occaecat. Culpa occaecat eu adipisicing commodo amet fugiat ex.</p>
+      <p>Officia occaecat reprehenderit excepteur minim ex magna nulla deserunt sint excepteur exercitation dolore ipsum consectetur. In nostrud ullamco duis commodo elit labore et ad sint officia tempor. Eiusmod duis laboris amet aute Lorem sit eu mollit ea non veniam. Consectetur ea veniam aute tempor fugiat et deserunt exercitation est commodo aute laboris. Culpa ea est ut laborum exercitation cillum consectetur aliqua id veniam id ad velit do. Voluptate eu pariatur velit et tempor.</p>
+
+      <a href="data:somedata">Data Link</a>
+
+    </main>
+    <!-- todo: add comments section outside of main content -->
+    <!-- may add option to pull up comments as a fixed element (may do the same for the footer) -->
+    <footer>
+      <!--* Footer Menu and Content -->
+      <div class="copyright">
+        <!--* Copyright Menu -->
+        Powered By <a href="https://www.aspiesoft.com">AspieSoft</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

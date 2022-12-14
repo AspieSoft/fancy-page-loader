@@ -1,0 +1,49 @@
+.left(@sel, @value) {
+  html:not([dir="rtl"]) & {
+    @{sel}-left: @value;
+  }
+
+  html[dir="rtl"] & {
+    @{sel}-right: @value;
+  }
+}
+
+.right(@sel, @value) {
+  html:not([dir="rtl"]) & {
+    @{sel}-right: @value;
+  }
+
+  html[dir="rtl"] & {
+    @{sel}-left: @value;
+  }
+}
+
+.left-pos(@value) {
+  html:not([dir="rtl"]) & {
+    left: @value;
+  }
+
+  html[dir="rtl"] & {
+    right: @value;
+  }
+}
+
+.right-pos(@value) {
+  html:not([dir="rtl"]) & {
+    right: @value;
+  }
+
+  html[dir="rtl"] & {
+    left: @value;
+  }
+}
+
+.rtl-value(@sel, @value, @valueRTL) {
+  html:not([dir="rtl"]) & {
+    @{sel}: @value;
+  }
+
+  html[dir="rtl"] & {
+    @{sel}: @valueRTL;
+  }
+}
