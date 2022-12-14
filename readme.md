@@ -58,7 +58,7 @@ There is a custom event listener you can use for this.
 
     // e.detail.attr is the value of `fetch-loader` that is being used
     // note: this method will run once for every element that uses the `fetch-loader` attribute
-    let attr = e.detail.old;
+    let attr = e.detail.attr;
 
     // e.detail.old is the original page you are coming from
     let oldPage = e.detail.old;
