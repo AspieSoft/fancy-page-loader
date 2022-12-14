@@ -53,15 +53,17 @@ There is a custom event listener you can use for this.
     // note: the animation may still be running for the page when this is called
     // you can safely use a 'setTimeout(function(){}, 530);' inside this event listener to ensure the animation is done running
 
-    // e.detail.page is your new page element that is being loaded
-    page = e.detail.page;
-
     // e.detail.attr is the value of `fetch-loader` that is being used
     // note: this method will run once for every element that uses the `fetch-loader` attribute
     let attr = e.detail.attr;
 
-    // e.detail.old is the original page you are coming from
-    let oldPage = e.detail.old;
+    if(attr === 'content'){
+      // e.detail.page is your new page element that is being loaded
+      page = e.detail.page;
+
+      // e.detail.old is the original page you are coming from
+      let oldPage = e.detail.old;
+    }
   });
 
 ```
