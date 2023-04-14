@@ -34,15 +34,9 @@
     scrollElm = window;
   }
 
-
   const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-
-  //todo: update readme to use new system
-
-
   const origURL = window.location.href;
-
 
   let runningEvent = 0;
   async function runEvent(data){
@@ -65,9 +59,28 @@
   }
 
 
+  // add initial state (can only run after the user interacts with the page)
+  let initStateRanOnce = false;
+  body.addEventListener('focusin', function() {
+    if(initStateRanOnce){
+      return;
+    }
+    initStateRanOnce = true;
+
+    // popSelfTriggered++;
+    currentTimeStamp = Date.now();
+    window.history.pushState('fetch-page-loader:' + currentTimeStamp, '', window.location.href);
+    currentURL = window.location.href;
+    setTimeout(function(){
+      currentPath = window.location.pathname;
+    }, 10);
+  }, {once: true, passive: true});
+
+
   runningEvent++;
   document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function(){
+      // run init events
       EventFetchPageLoaded.detail.page = mainPage;
       document.dispatchEvent(EventFetchPageLoaded);
 
@@ -514,12 +527,50 @@
   setInterval(function(){
     document.querySelectorAll('a:not([fancy-link-ready])').forEach(function(elm){
       elm.setAttribute('fancy-link-ready', '');
-      if(!elm.href || elm.href === '' || !elm.href.startsWith(window.location.origin) || elm.getAttribute('href').replace(window.location.origin, '').match(/^[^\w_\-\\/]+/)){
+      if(!elm.href || elm.href === '' || !elm.href.startsWith(window.location.origin) || elm.getAttribute('href').replace(window.location.origin, '').match(/^[^\w_\-\\/#]+/)){
         return;
       }
 
       // prevent non http links and file extentions from loading
       if(!elm.href.match(/^https?:\/\//) || elm.href.match(/\.[\w_-]+$/)){
+        return;
+      }
+
+      // prevent ID links from loading
+      if(elm.getAttribute('href').startsWith('#')){
+        let par = elm.parentNode;
+        while(par !== document){
+          if(par === scrollElm){
+            break;
+          }
+          par = par.parentNode;
+        }
+
+        const inScrollElm = (par === scrollElm);
+
+        elm.addEventListener('click', function(e) {
+          // e.preventDefault();
+          let currentUrl = window.location.href;
+          setTimeout(function(){
+            popSelfTriggered++;
+            window.history.replaceState(null, null, currentUrl);
+            window.history.back();
+          }, 10);
+
+          let link = elm.getAttribute('href');
+          if(link === '#'){
+            body.focus();
+          }else{
+            let linkToElm = elm.querySelector(link);
+            if(linkToElm){
+              linkToElm.focus();
+              if(inScrollElm){
+                scrollElm.scrollTo(linkToElm);
+              }
+            }
+          }
+        });
+
         return;
       }
 
@@ -576,6 +627,9 @@
     }
 
     if(window.location.href.replace(/\/?#[\w_-]*\??/, '') === currentURL.replace(/\/?#[\w_-]*\??/, '')){
+      if(!window.history.state){
+        window.history.back();
+      }
       return;
     }
 
