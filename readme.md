@@ -12,8 +12,8 @@ Note: if anything fails to load, the script should automatically let the browser
 
 ```html
 <!--? setting media to "print" and then to "all" acts as an async load for stylesheets -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AspieSoft/fancy-page-loader@2.1.0/style.min.css" media="print" onload="this.media='all'"/>
-<script src="https://cdn.jsdelivr.net/gh/AspieSoft/fancy-page-loader@2.1.0/script.min.js" async></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AspieSoft/fancy-page-loader@2.1.1/style.min.css" media="print" onload="this.media='all'"/>
+<script src="https://cdn.jsdelivr.net/gh/AspieSoft/fancy-page-loader@2.1.1/script.min.js" async></script>
 ```
 
 ## Setup

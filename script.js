@@ -119,7 +119,13 @@
     const tmpWrapper = document.createElement('div');
     tmpWrapper.style['display'] = 'none';
     tmpWrapper.innerHTML = data;
-    const newPage = tmpWrapper.firstChild;
+    const newPage = tmpWrapper.firstElementChild;
+
+    if(!newPage){
+      window.open(elm.href, '_self');
+      elm.style['pointer-events'] = '';
+      return;
+    }
 
     newPage.classList.add('fetch-loading');
     newPage.style.setProperty('--fetch-pos-x', (e.pageX - (window.innerWidth/2)) + 'px');
@@ -215,7 +221,12 @@
     const tmpWrapper = document.createElement('div');
     tmpWrapper.style['display'] = 'none';
     tmpWrapper.innerHTML = data;
-    const newPage = tmpWrapper.firstChild;
+    const newPage = tmpWrapper.firstElementChild;
+
+    if(!newPage){
+      window.location.reload();
+      return;
+    }
 
     if(timeStamp > oldTimeStamp){
       newPage.classList.add('fetch-loading');
@@ -439,10 +450,10 @@
                 contTag = tag;
                 contList.push({attr: 'content', start: i});
               }else{
-                for(let i = 0; i < attrList.length; i++){
-                  if(attrList[i].startsWith(fetchAttr)){
+                for(let j = 0; j < attrList.length; j++){
+                  if(attrList[j].startsWith(fetchAttr)){
                     contTag = tag;
-                    contList.push({attr: attrList[i].replace(/^[\w_-]+=(["'`]|)(.*)\1$/, '$2'), start: i});
+                    contList.push({attr: attrList[j].replace(/^[\w_-]+=(["'`]|)(.*)\1$/, '$2'), start: i});
                     break;
                   }
                 }
@@ -675,10 +686,10 @@
               contTag = tag;
               contList.push({attr: 'content', start: i});
             }else{
-              for(let i = 0; i < attrList.length; i++){
-                if(attrList[i].startsWith(fetchAttr)){
+              for(let j = 0; j < attrList.length; j++){
+                if(attrList[j].startsWith(fetchAttr)){
                   contTag = tag;
-                  contList.push({attr: attrList[i].replace(/^[\w_-]+=(["'`]|)(.*)\1$/, '$2'), start: i});
+                  contList.push({attr: attrList[j].replace(/^[\w_-]+=(["'`]|)(.*)\1$/, '$2'), start: i});
                   break;
                 }
               }
